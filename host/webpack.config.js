@@ -47,10 +47,6 @@ module.exports = {
           singleton: true, // Ensure react-router-dom is shared properly
           eager: true,
         },
-        axios: {
-          singleton: true, // Ensure react-router-dom is shared properly
-          eager: true,
-        },
       },
       // shared: {
       //   react: { singleton: true, requiredVersion: "^18.0.0" },
