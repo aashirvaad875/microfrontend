@@ -29,6 +29,9 @@ module.exports = {
       remotes: {
         dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
       },
+      exposes: {
+        "./axiosInstance": "./src/lib/axiosInstance",
+      },
       shared: {
         react: {
           singleton: true, // Ensure React is a singleton
@@ -41,6 +44,10 @@ module.exports = {
           requiredVersion: "^18.0.0", // Ensure the same version as react
         },
         "react-router-dom": {
+          singleton: true, // Ensure react-router-dom is shared properly
+          eager: true,
+        },
+        axios: {
           singleton: true, // Ensure react-router-dom is shared properly
           eager: true,
         },
