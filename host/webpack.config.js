@@ -1,5 +1,6 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -8,6 +9,9 @@ module.exports = {
     publicPath: "http://localhost:3000/", // Host public path
   },
   resolve: {
+    alias:{
+      src:path.resolve(__dirname, 'src')
+    },
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
   module: {
@@ -30,7 +34,7 @@ module.exports = {
         dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
-        "./axiosInstance": "./src/lib/axiosInstance",
+        "./services/auth": "./src/services/auth",
       },
       shared: {
         react: {
@@ -47,15 +51,22 @@ module.exports = {
           singleton: true, // Ensure react-router-dom is shared properly
           eager: true,
         },
+        "@reduxjs/toolkit":{
+          singleton: true,
+          eager: true,
+          requiredVersion: "^2.3.0",
+        },
+        "react-redux":{
+          singleton: true,
+          eager: true,
+          requiredVersion: "^9.1.2"
+        }
       },
-      // shared: {
-      //   react: { singleton: true, requiredVersion: "^18.0.0" },
-      //   "react-dom": { singleton: true, requiredVersion: "^18.0.0" },
-      // },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+  
   ],
   devServer: {
     port: 3000,

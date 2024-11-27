@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES5", // Target ECMAScript 5 for browser compatibility
+    "target": "ES6", // Target ECMAScript 5 for browser compatibility
     "lib": ["DOM", "DOM.Iterable", "ESNext"], // Include browser and ESNext types
     "module": "ESNext", // Use ESNext for module resolution
     "moduleResolution": "Node", // Resolve modules like Node.js
