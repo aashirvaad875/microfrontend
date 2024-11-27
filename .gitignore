@@ -18,11 +18,9 @@ yarn-error.log
 */.cache/
 */.dist/
 */.next/
-*/.nuxt/
-*/.parcel-cache/
-*/.storybook-out/
 */.yarn/
 */.yarn-integrity/
+
 
 .env
 /build

@@ -34,10 +34,7 @@ module.exports = {
         dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
-        "./axiosInstance": "./src/lib/axiosInstance",
-        "./store": "./src/store",
         "./services/auth": "./src/services/auth",
-        
       },
       shared: {
         react: {
@@ -65,15 +62,11 @@ module.exports = {
           requiredVersion: "^9.1.2"
         }
       },
-      // shared: {
-      //   react: { singleton: true, requiredVersion: "^18.0.0" },
-      //   "react-dom": { singleton: true, requiredVersion: "^18.0.0" },
-      // },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    
+  
   ],
   devServer: {
     port: 3000,

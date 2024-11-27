@@ -1,17 +1,15 @@
 // Need to use the React-specific entry point to allow generating React hooks
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { axiosBaseQuery } from 'host/axiosInstance'
+import { EndpointBuilder } from '@reduxjs/toolkit/query/react'
+import { authApi } from 'host/services/auth'
 
 // Define a service using a base URL and expected endpoints
-export const bucketApi = createApi({
-  reducerPath: 'bucketApi',
-  baseQuery: axiosBaseQuery(),
-  endpoints: (builder) => ({
+export const bucketApi = authApi.injectEndpoints({
+  endpoints: (builder: EndpointBuilder<any, any, any>) => ({
     addImage: builder.mutation<any, { file: string; uploadFor: string }>({
       query: ({ file, uploadFor }) => {
-        const payload = new FormData();
-        payload.append('file', file);
-        payload.append('uploadFor', uploadFor);
+        const payload = new FormData()
+        payload.append('file', file)
+        payload.append('uploadFor', uploadFor)
         return {
           url: `/upload-profile`,
           method: 'POST',
@@ -19,11 +17,11 @@ export const bucketApi = createApi({
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-        };
+        }
       },
     }),
   }),
-});
+})
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useAddImageMutation} = bucketApi
+export const { useAddImageMutation } = bucketApi

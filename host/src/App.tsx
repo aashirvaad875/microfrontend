@@ -21,7 +21,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/dashboard/*" element={<DashboardApp />} />
             <Route path="/" element={<AuthTestComponent />} />
-            {/* You can add more routes if you have other micro frontends */}
+            {/* You can add more routes if you have other micro frontend */}
           </Routes>
         </Suspense>
       </BrowserRouter>
