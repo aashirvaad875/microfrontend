@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Target ECMAScript 5 for browser compatibility
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Include browser and ESNext types
+    "module": "ESNext", // Use ESNext for module resolution
+    "moduleResolution": "Node", // Resolve modules like Node.js
+    "jsx": "react-jsx", // Use React 17+ JSX transformation
+    "strict": true, // Enable strict type checking
+    "esModuleInterop": true, // Enable interoperability for CommonJS modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in imports
+    "resolveJsonModule": true, // Allow importing `.json` files
+    "baseUrl": ".", // Base directory for module resolution
+
+    "outDir": "./dist", // Output directory for compiled files
+    "declaration": true, // Generate `.d.ts` declaration files
+    "declarationMap": true // Generate source maps for `.d.ts` files
+  },
+  "include": [
+    "src/**/*" // Include all TypeScript files in the `src` folder
+  ],
+  "exclude": [
+    "node_modules", // Exclude `node_modules`
+    "dist" // Exclude the output directory
+  ]
+}
