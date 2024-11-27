@@ -9,5 +9,20 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+*/.env
+*/.env.local
+*/.env.development
+*/.env.test
+*/.env.production
+
+*/.cache/
+*/.dist/
+*/.next/
+*/.nuxt/
+*/.parcel-cache/
+*/.storybook-out/
+*/.yarn/
+*/.yarn-integrity/
+
 .env
 /build
