@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 
 import { useLoginMutation } from 'host/services/auth'
 import { GlobalStore } from 'redux-micro-frontend'
-import { useAddImageMutation } from 'src/services/bucket'
+import { useAddImageMutation } from '../services/bucket'
 
 interface GlobalState {
-  mainStore: {
+  'host-store': {
     auth: any
   }
 }
@@ -18,16 +18,15 @@ const HomePage = () => {
 
   useEffect(() => {
     const globalStateChanged = (globalState: GlobalState) => {
-      const mainStoreState = globalState.mainStore
-      console.log('global store trying to read auth', mainStoreState.auth)
+      const hostStoreState = globalState['host-store']
+      console.log('global store trying to read auth', hostStoreState.auth)
     }
-
     globalStore.SubscribeToGlobalState('host-store', globalStateChanged)
-
     return () => {
       // globalStore.UnsubscribeFromGlobalState('remoteStore', globalStateChanged)
     }
   }, [globalStore])
+
   return (
     <div>
       <h1>Welcome to the Home Page!dsd</h1>
@@ -38,7 +37,16 @@ const HomePage = () => {
       >
         hit auth api
       </button>
-      <button onClick={() => {}}>hit bucket api</button>
+      <button
+        onClick={() =>
+          handleBucket({
+            file: 'any',
+            uploadFor: 'profile',
+          })
+        }
+      >
+        hit bucket api
+      </button>
     </div>
   )
 }

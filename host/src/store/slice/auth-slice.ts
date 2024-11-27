@@ -23,7 +23,6 @@ export const loginSlice: Slice<AuthStateType> = createSlice({
   initialState,
   reducers: {
     loginSuccess(state, action) {
-      console.log('loginSuccess', action)
       state.accessToken = `Bearer ${action.payload?.data?.token?.accessToken}`
       state.refreshToken = `Bearer ${action.payload?.data?.token?.refreshToken}`
       state.isLoading = false

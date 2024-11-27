@@ -17,6 +17,7 @@ import AboutPage from './pages/AboutPage'
 // import { Provider } from "react-redux";
 import { store } from './store'
 import { GlobalStore } from 'redux-micro-frontend'
+import { Provider } from 'react-redux'
 
 // Initialize GlobalStore
 const globalStore = GlobalStore.Get()
@@ -24,11 +25,13 @@ globalStore.RegisterStore('dashboard-store', store)
 
 const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-    </Routes>
+    <Provider store={store}>
+      <Routes>
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
+    </Provider>
   )
 }
 
