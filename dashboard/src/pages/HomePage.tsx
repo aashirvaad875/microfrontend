@@ -15,6 +15,21 @@ const HomePage = () => {
   const [handleBucket] = useAddImageMutation()
 
   const globalStore = GlobalStore.Get()
+  const handleDispatch = () => {
+    const action = {
+      type: 'auth/loginSuccess', // this is in host
+      payload: {
+        data: {
+          token: {
+            accessToken: 'Remote accessToken',
+            refreshToken: 'Remote refreshToken',
+          },
+        },
+      },
+    }
+
+    globalStore.DispatchAction('host-store', action)
+  }
 
   useEffect(() => {
     const globalStateChanged = (globalState: GlobalState) => {
@@ -35,7 +50,7 @@ const HomePage = () => {
           handleAuth({ email: 'anjit@gmail.com', password: 'password' })
         }}
       >
-        hit auth api
+        hit auth api (api in host)
       </button>
       <button
         onClick={() =>
@@ -45,8 +60,10 @@ const HomePage = () => {
           })
         }
       >
-        hit bucket api
+        hit bucket api (api in remote)
       </button>
+
+      <button onClick={() => handleDispatch()}>dispatch action (in host)</button>
     </div>
   )
 }

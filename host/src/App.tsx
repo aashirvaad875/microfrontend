@@ -1,10 +1,9 @@
 import React, { lazy, Suspense } from 'react'
-import { Provider, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { store } from './store'
 import { useLoginMutation } from './services/auth'
 import { GlobalStore } from 'redux-micro-frontend'
-import { loginSuccess } from './store/slice/auth-slice'
 
 // Initialize GlobalStore
 // const globalStore = GlobalStore.Get()
@@ -33,7 +32,7 @@ export default App
 
 const AuthTestComponent = () => {
   const [handleAuth] = useLoginMutation()
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const globalStore = GlobalStore.Get()
   const handleDispatch = () => {
     const action = {
@@ -41,8 +40,8 @@ const AuthTestComponent = () => {
       payload: {
         data: {
           token: {
-            accessToken: 'Bearer accessToken',
-            refreshToken: 'newRefreshToken',
+            accessToken: 'Host accessToken',
+            refreshToken: 'Host newRefreshToken',
           },
         },
       },
