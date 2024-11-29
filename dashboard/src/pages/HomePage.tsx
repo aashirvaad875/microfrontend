@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useLoginMutation } from 'host/services/auth'
 import { GlobalStore } from 'redux-micro-frontend'
 import { useAddImageMutation } from '../services/bucket'
+import { myPackage } from '@anjitcubit/micro-frontend-shared'
 
 interface GlobalState {
   'host-store': {
@@ -64,6 +65,7 @@ const HomePage = () => {
       </button>
 
       <button onClick={() => handleDispatch()}>dispatch action (in host)</button>
+      <p>{myPackage('hello world')}</p>
     </div>
   )
 }
